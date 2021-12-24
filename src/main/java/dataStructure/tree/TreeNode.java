@@ -16,7 +16,7 @@ public class TreeNode {
             return;
         }
 
-        if (data < value) {
+        if (data > value) {
             if (leftChild == null) {
                 leftChild = new TreeNode(value);
             } else {
@@ -44,8 +44,46 @@ public class TreeNode {
             return true;
         }
         return value < current.data
-                ? containsNodeRecursive(current.rightChild, value)
-                : containsNodeRecursive(current.leftChild, value);
+                ? containsNodeRecursive(current.leftChild, value)
+                : containsNodeRecursive(current.rightChild, value);
+    }
+
+    public void preOrder(TreeNode node) {
+        System.out.println(node.data);
+
+        if (node.leftChild != null) {
+            preOrder(node.leftChild);
+        }
+        if (node.rightChild != null) {
+            preOrder(node.rightChild);
+        }
+    }
+
+    public void inOrder(TreeNode node) {
+
+        if (node.leftChild != null) {
+            inOrder(node.leftChild);
+        }
+
+        System.out.println(node.data);
+
+        if (node.rightChild != null) {
+            inOrder(node.rightChild);
+        }
+    }
+
+
+    public void postOrder(TreeNode node) {
+
+        if (node.leftChild != null) {
+            postOrder(node.leftChild);
+        }
+
+        if (node.rightChild != null) {
+            postOrder(node.rightChild);
+        }
+
+        System.out.println(node.data);
     }
 
     public int getData() {
