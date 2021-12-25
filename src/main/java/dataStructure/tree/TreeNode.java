@@ -48,42 +48,58 @@ public class TreeNode {
                 : containsNodeRecursive(current.rightChild, value);
     }
 
-    public void preOrder(TreeNode node) {
-        System.out.println(node.data);
+    public void traversePreOder() {
+        System.out.println(this.data);
 
-        if (node.leftChild != null) {
-            preOrder(node.leftChild);
+        if (leftChild != null) {
+            leftChild.traversePreOder();
         }
-        if (node.rightChild != null) {
-            preOrder(node.rightChild);
-        }
-    }
-
-    public void inOrder(TreeNode node) {
-
-        if (node.leftChild != null) {
-            inOrder(node.leftChild);
-        }
-
-        System.out.println(node.data);
-
-        if (node.rightChild != null) {
-            inOrder(node.rightChild);
+        if (rightChild != null) {
+            rightChild.traversePreOder();
         }
     }
 
+    public void traverseInorder() {
+        if (leftChild != null) {
+            leftChild.traverseInorder();
+        }
+        System.out.println(data);
 
-    public void postOrder(TreeNode node) {
+        if (rightChild != null) {
+            rightChild.traverseInorder();
+        }
+    }
 
-        if (node.leftChild != null) {
-            postOrder(node.leftChild);
+
+    public void traversePostOrder() {
+
+        if (leftChild != null) {
+            leftChild.traversePostOrder();
         }
 
-        if (node.rightChild != null) {
-            postOrder(node.rightChild);
+        if (rightChild != null) {
+            rightChild.traversePostOrder();
         }
 
-        System.out.println(node.data);
+        System.out.println(this.data);
+    }
+
+    public TreeNode get(int value) {
+        if (this.data == value) {
+            return this;
+        }
+
+        if (data > value) {
+            if (leftChild != null) {
+                return leftChild.get(value);
+            }
+        } else {
+            if (rightChild != null) {
+                return rightChild.get(value);
+            }
+        }
+
+        return null;
     }
 
     public int getData() {
@@ -110,4 +126,19 @@ public class TreeNode {
         this.rightChild = rightChild;
     }
 
+    public int min() {
+        if (leftChild == null) {
+            return data;
+        } else {
+            return leftChild.min();
+        }
+    }
+
+    public int max() {
+        if (rightChild == null) {
+            return data;
+        } else {
+            return rightChild.max();
+        }
+    }
 }

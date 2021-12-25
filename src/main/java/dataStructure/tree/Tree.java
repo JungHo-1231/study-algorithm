@@ -17,15 +17,36 @@ public class Tree {
     }
 
     public void printPreOder() {
-        root.preOrder(root);
+        root.traversePreOder();
     }
 
-    public void traverseInorder(){
-        root.inOrder(root);
+    public void traverseInorder() {
+        root.traverseInorder();
     }
 
-    public void postOrder(){
-        root.postOrder(root);
+    public void traversePostOrder() {
+        root.traversePostOrder();
     }
 
+    public TreeNode get(int value) {
+        if (root != null) {
+            return root.get(value);
+        }
+        return null;
+    }
+
+
+    public int min() {
+        if (root != null) {
+            return root.min();
+        }
+        return 0;
+    }
+
+    public int max() {
+        if (root != null) {
+            return root.max();
+        }
+        return 0;
+    }
 }
